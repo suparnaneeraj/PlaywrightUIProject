@@ -9,6 +9,7 @@ export class HomePage{
     private checkboxLinkLocator :   Locator;
     private dropdownMenu : Locator;
     private fileUploadMenu : Locator;
+    private dynamicControlMenu : Locator;
 
 
     constructor(page: Page){
@@ -18,6 +19,8 @@ export class HomePage{
         this.checkboxLinkLocator = page.getByText('Checkboxes');
         this.dropdownMenu = page.getByText('Dropdown');
         this.fileUploadMenu = page.getByText('File Upload');
+        this.dynamicControlMenu = page.getByText('Dynamic Controls');
+
     }
 
     async goToBasicAuthMenu(){
@@ -34,6 +37,10 @@ export class HomePage{
 
     async goToFileUploadMenu(){
         await this.fileUploadMenu.click()
+    }
+
+    async goToDynamicControls(){
+        await this.dynamicControlMenu.click();
     }
 
 

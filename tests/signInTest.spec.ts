@@ -1,7 +1,6 @@
 import {test, expect, Page} from '@playwright/test';
 import { Browser } from '@playwright/test';
 import { HomePage } from '../pages/homePage';
-import { hostname } from 'node:os';
 import { BasicAuthPage } from '../pages/basicAuthPage';
 import { TestHelper } from '../util/testHelper';
 

@@ -22,10 +22,10 @@ test.describe('Verify checkbox functionality',async()=>{
         const pageHeading = await (testHelperPage.getPageHeading()).textContent();
         expect(pageHeading).toEqual('Checkboxes');
         // first we verify if the second checkbox is checked.
-        const checkbox2 =  checkboxPage.getCheckbox('checkbox 2');
+        const checkbox2 =  checkboxPage.getCheckbox(checkbox2Name);
         await expect(checkbox2).toBeChecked();
         //click on first checkbox
-        const checkbox1 = checkboxPage.getCheckbox('checkbox 1')
+        const checkbox1 = checkboxPage.getCheckbox(checkbox1Name)
         await checkbox1.check();
         await expect(checkbox1).toBeChecked();
         
