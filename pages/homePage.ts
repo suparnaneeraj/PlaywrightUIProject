@@ -10,17 +10,19 @@ export class HomePage{
     private dropdownMenu : Locator;
     private fileUploadMenu : Locator;
     private dynamicControlMenu : Locator;
-
+    private dynamicLoadingMenu : Locator;
+    private dragAndDropMenu :  Locator;
 
     constructor(page: Page){
         this.page = page;
-        this.basicAuthLinkLocator = page.getByText('Basic Auth');
-        this.DropdownLinkLocator = page.getByText('Dropdown');
-        this.checkboxLinkLocator = page.getByText('Checkboxes');
-        this.dropdownMenu = page.getByText('Dropdown');
-        this.fileUploadMenu = page.getByText('File Upload');
-        this.dynamicControlMenu = page.getByText('Dynamic Controls');
-
+        this.basicAuthLinkLocator = this.page.getByText('Basic Auth');
+        this.DropdownLinkLocator = this.page.getByText('Dropdown');
+        this.checkboxLinkLocator = this.page.getByText('Checkboxes');
+        this.dropdownMenu = this.page.getByText('Dropdown');
+        this.fileUploadMenu = this.page.getByText('File Upload');
+        this.dynamicControlMenu = this.page.getByText('Dynamic Controls');
+        this.dynamicLoadingMenu = this.page.getByText('Dynamic Loading');
+        this.dragAndDropMenu = this.page.getByText('Drag and Drop');
     }
 
     async goToBasicAuthMenu(){
@@ -39,8 +41,16 @@ export class HomePage{
         await this.fileUploadMenu.click()
     }
 
-    async goToDynamicControls(){
+    async goToDynamicControlsPage(){
         await this.dynamicControlMenu.click();
+    }
+
+    async goToDynamicLoadingPage(){
+        await this.dynamicLoadingMenu.click();
+    }
+
+    async goToDragAndDropPage(){
+        await this.dragAndDropMenu.click();
     }
 
 
