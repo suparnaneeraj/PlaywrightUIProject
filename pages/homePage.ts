@@ -12,6 +12,7 @@ export class HomePage{
     private dynamicControlMenu : Locator;
     private dynamicLoadingMenu : Locator;
     private dragAndDropMenu :  Locator;
+    private downloadMenu: Locator;
 
     constructor(page: Page){
         this.page = page;
@@ -23,6 +24,7 @@ export class HomePage{
         this.dynamicControlMenu = this.page.getByText('Dynamic Controls');
         this.dynamicLoadingMenu = this.page.getByText('Dynamic Loading');
         this.dragAndDropMenu = this.page.getByText('Drag and Drop');
+        this.downloadMenu = this.page.getByText('File Download',{exact:true});
     }
 
     async goToBasicAuthMenu(){
@@ -53,7 +55,9 @@ export class HomePage{
         await this.dragAndDropMenu.click();
     }
 
-
+    async goToFileDownloadPage(){
+        await this.downloadMenu.click();
+    }
     
 
 }
