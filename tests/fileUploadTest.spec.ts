@@ -34,4 +34,18 @@ test.describe('File upload tests',()=>{
         await expect(fileUploadPage.getPageTitle()).toHaveText(errorMessage);
     })
 
+    test('should verify if the chosen file can be changed into a new file', async({page})=>{
+        const uploadFilePageTitle = 'File Uploader';
+        const filePath = 'test-data/files/';
+        const fileName = 'uploadFile.txt';
+        const newFileName = 'uploadFileNew.txt';
+        const fileUploadPage = new FileUpload(page);
+        await expect(fileUploadPage.getPageTitle()).toHaveText(uploadFilePageTitle);
+        const chosenFile = await fileUploadPage.chooseFiles(filePath+fileName);
+        expect(chosenFile).toContain(fileName);
+        const updatedChosenFile = await fileUploadPage.chooseFiles(filePath+newFileName);
+        expect(updatedChosenFile).toContain(newFileName);
+
+    })
+
 })
