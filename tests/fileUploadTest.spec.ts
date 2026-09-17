@@ -1,7 +1,6 @@
 import {test, expect} from '@playwright/test';
 import { HomePage } from '../pages/homePage';
 import { FileUpload } from '../pages/fileUploadPage';
-import { UploadedFiles } from '../pages/uploadedFilesPage';
 
 test.describe('File upload tests',()=>{
 
@@ -21,9 +20,8 @@ test.describe('File upload tests',()=>{
         const chosenFile = await fileUploadPage.chooseFiles(filePath+fileName);
         expect(chosenFile).toContain(fileName);
         await fileUploadPage.uploadFile();
-        const uploadedFilesPage = new UploadedFiles(page);
-        await expect(uploadedFilesPage.getPageTitle()).toHaveText(UploadedFilesPageTitle);
-        const uploadedFile = uploadedFilesPage.getUploadedFilse();
+        await expect(fileUploadPage.getPageTitle()).toHaveText(UploadedFilesPageTitle);
+        const uploadedFile = fileUploadPage.getUploadedFilse();
         await expect(uploadedFile).toHaveText(fileName);
     })
 
@@ -33,8 +31,7 @@ test.describe('File upload tests',()=>{
         const uploadFilePageTitle = 'File Uploader';
         await expect(fileUploadPage.getPageTitle()).toHaveText(uploadFilePageTitle);
         await fileUploadPage.uploadFile();
-        const uploadedFilesPage = new UploadedFiles(page);
-        await expect(uploadedFilesPage.getPageTitle()).toHaveText(errorMessage);
+        await expect(fileUploadPage.getPageTitle()).toHaveText(errorMessage);
     })
 
 })

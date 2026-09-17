@@ -6,13 +6,15 @@ export class FileUpload{
     private pageTitle: Locator;
     private fileInput: Locator;
     private uploadButton: Locator;
+    private uploadedFile: Locator;
 
     constructor(page:Page){
         this.page = page;
         this.pageTitle = this.page.getByRole('heading');
         this.fileInput = this.page.locator('#file-upload');
         this.uploadButton = this.page.locator('#file-submit');
-
+        this.uploadedFile = this.page.locator('#uploaded-files');
+        
     }
 
     getPageTitle(){
@@ -27,6 +29,10 @@ export class FileUpload{
 
     async uploadFile(){
         await this.uploadButton.click();
+    }
+
+      getUploadedFilse(){
+        return this.uploadedFile;
     }
 
 
