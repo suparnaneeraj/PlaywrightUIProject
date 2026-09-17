@@ -1,9 +1,10 @@
-import {Page, Locator} from '@playwright/test';
+import {Page, Locator, expect} from '@playwright/test';
 
 export class DownloadPage{
 
     private readonly page: Page;
     private pageTitle: Locator;
+   
 
     constructor(page: Page){
         this.page= page;
@@ -16,7 +17,9 @@ export class DownloadPage{
     }
 
     async downloadFile(fileName: string ){
-        await this.page.getByText(fileName).click();
+        const fileLocator=this.page.getByText(fileName);
+        await expect(fileLocator).toBeVisible();
+        await fileLocator.click();
     }
 
 }

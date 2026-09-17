@@ -8,11 +8,11 @@ export class HomePage{
     private DropdownLinkLocator : Locator;
     private checkboxLinkLocator :   Locator;
     private dropdownMenu : Locator;
-    private fileUploadMenu : Locator;
     private dynamicControlMenu : Locator;
     private dynamicLoadingMenu : Locator;
     private dragAndDropMenu :  Locator;
     private downloadMenu: Locator;
+    private fileUploadMenu: Locator;
 
     constructor(page: Page){
         this.page = page;
@@ -39,10 +39,6 @@ export class HomePage{
         await this.dropdownMenu.click();
     }
 
-    async goToFileUploadMenu(){
-        await this.fileUploadMenu.click()
-    }
-
     async goToDynamicControlsPage(){
         await this.dynamicControlMenu.click();
     }
@@ -57,6 +53,10 @@ export class HomePage{
 
     async goToFileDownloadPage(){
         await this.downloadMenu.click();
+    }
+
+    async goToFileUploadPage(){
+        await this.fileUploadMenu.click();
     }
     
 

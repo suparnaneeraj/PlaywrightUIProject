@@ -20,6 +20,7 @@ test(`should download the file successfully`, async({page})=>{
         const downloadPage = new DownloadPage(page);
         await expect(downloadPage.getPageTitle()).toHaveText('File Downloader');
         for(const file of files){
+            
             const downloadPromise = page.waitForEvent('download'); // asks playwright to start listening to the event download or to detect an event download
             await downloadPage.downloadFile(file.name);  // clicks the file to download
             const download = await downloadPromise; // wait for playwright to receive the download event and gets the download object
