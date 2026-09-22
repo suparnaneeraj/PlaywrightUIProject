@@ -7,6 +7,9 @@ on:
 jobs:
     Run-playwright-tests:
         runs-on: ubuntu-latest
+        env:
+            USERNAME:   ${{secrets.USERNAME}}
+            PASSWORD:   ${{secrets.PASSWORD}}
         steps:
             -   name:   Checkout repository code
                 uses:   actions/checkout@v4
