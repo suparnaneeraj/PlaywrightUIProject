@@ -16,10 +16,14 @@ export class DownloadPage{
         return this.pageTitle;
     }
 
-    async downloadFile(fileName: string ){
-        const fileLocator=this.page.getByText(fileName);
-        await expect(fileLocator).toBeVisible();
-        await fileLocator.click();
+    async getFileByExtension(extension: string){
+        return this.page.locator(`a[href$=".${extension}"]`).first().innerText();
+       
+    }
+
+    async downloadFile(file: string){
+        await this.page.getByText(file).click();
+    
     }
 
 }
