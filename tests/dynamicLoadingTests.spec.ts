@@ -22,7 +22,7 @@ test.describe('Dynamic Loading Tests', async()=>{
         await expect(hiddenElementPage.verifyHiddenElementPageTitle()).toBeVisible();
         await hiddenElementPage.clickStartToUnhide();
         await expect(hiddenElementPage.getLoading()).toBeVisible();
-        await expect(hiddenElementPage.getLoading()).not.toBeVisible();
+        await expect(hiddenElementPage.getLoading()).not.toBeVisible({timeout:7000});
         await expect(hiddenElementPage.getHiddenText()).toHaveText(hiddenText);
     })
 })
