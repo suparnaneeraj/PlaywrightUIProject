@@ -5,7 +5,7 @@ import { DragAndDrop } from '../pages/dragAndDropPage';
 test.beforeEach(async({page})=>{
     await page.goto('/');
     const homePage= new HomePage(page);
-    await homePage.goToDragAndDropPage();
+    await homePage.goToMenu('Drag and Drop');
 })
 test('should drag and drop elements successfully', async({page})=>{
     const pageTitle = 'Drag and Drop';

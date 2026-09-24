@@ -1,8 +1,8 @@
 import { Page, Locator } from "@playwright/test";
+import { BasePage } from "./basePage";
 
-export class DynamicControls{
+export class DynamicControls extends BasePage{
 
-    private readonly page: Page;
     private dynamicControlHeadingLocator : Locator;
     private removeCheckboxButton: Locator;
     private checkbox: Locator;
@@ -11,7 +11,7 @@ export class DynamicControls{
     private addButton: Locator;
 
     constructor(page:Page){
-        this.page = page;
+        super(page);
         this.dynamicControlHeadingLocator = this.page.getByRole('heading',{name: 'Dynamic Controls'});
         this.checkbox = this.page.locator('div').filter({has:this.page.getByRole('heading',{name:'Remove/add'})}).locator('#checkbox');
         this.removeCheckboxButton = this.page.getByRole('button',{name:'Remove'});

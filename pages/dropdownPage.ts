@@ -1,13 +1,13 @@
 import {Page, Locator} from '@playwright/test';
+import { BasePage } from './basePage';
 
-export class DropdownPage{
+export class DropdownPage extends BasePage{
 
-    private readonly page : Page;
     private selectedDropdownValue : Locator;
     private dropdownOptions : Locator;
 
     constructor(page : Page){
-        this.page = page;
+        super(page);
         this.dropdownOptions = this.page.getByRole('combobox');
         this.selectedDropdownValue = this.page.locator('option:checked');
     }

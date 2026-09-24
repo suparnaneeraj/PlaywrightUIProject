@@ -7,7 +7,7 @@ test.describe('File upload tests',()=>{
     test.beforeEach(async({page})=>{
         await page.goto('/');
         const homePage = new HomePage(page);
-        await homePage.goToFileUploadPage();
+        await homePage.goToMenu('File Upload');
     })
 
     test('should verify if a file is successfully uploaded', async({page})=>{

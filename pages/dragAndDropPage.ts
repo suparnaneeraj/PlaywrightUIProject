@@ -1,17 +1,15 @@
 import {Page, Locator} from '@playwright/test';
+import { BasePage } from './basePage';
 
-export class DragAndDrop{
+export class DragAndDrop extends BasePage{
 
-    private readonly page: Page;
     private firstColumn : Locator;
     private secondColumn : Locator;
-    private pageTitle : Locator;
 
     constructor(page: Page){
-        this.page = page;
+        super(page);
         this.firstColumn = this.page.locator('#column-a');
         this.secondColumn = this.page.locator('#column-b');
-        this.pageTitle = this.page.getByRole('heading');
     }
 
     async dragFirstToSecond(){
@@ -25,9 +23,4 @@ export class DragAndDrop{
      getColumnB(){
         return this.secondColumn;
     }
-
-    getPageTitle(){
-        return this.pageTitle;
-    }
-
 }

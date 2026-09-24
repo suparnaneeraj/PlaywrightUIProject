@@ -1,12 +1,12 @@
 import { Page, Locator } from "@playwright/test";
+import { BasePage } from "./basePage";
 
-export class CheckboxPage{
+export class CheckboxPage extends BasePage{
 
-    private readonly page : Page;
     private checkBoxLocator :  Locator;
 
     constructor(page : Page){
-        this.page = page;
+        super(page);
         this.checkBoxLocator =  this.page.locator('#checkboxes input[type="checkbox"]');
     }
     

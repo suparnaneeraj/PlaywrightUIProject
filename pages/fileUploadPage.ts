@@ -1,24 +1,18 @@
 import {Page, Locator} from '@playwright/test';
+import { BasePage } from './basePage';
 
-export class FileUpload{
+export class FileUpload extends BasePage{
 
-    private readonly page: Page;
-    private pageTitle: Locator;
     private fileInput: Locator;
     private uploadButton: Locator;
     private uploadedFile: Locator;
 
     constructor(page:Page){
-        this.page = page;
-        this.pageTitle = this.page.getByRole('heading');
+        super(page);
         this.fileInput = this.page.locator('#file-upload');
         this.uploadButton = this.page.locator('#file-submit');
         this.uploadedFile = this.page.locator('#uploaded-files');
         
-    }
-
-    getPageTitle(){
-        return this.pageTitle;
     }
 
     async chooseFiles(filePath: string){

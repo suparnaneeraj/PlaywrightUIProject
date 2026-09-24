@@ -25,7 +25,7 @@ test('should successfully sign in to the application with valid credentials', as
     homePage = new HomePage(page);
     basicAuthPage = new BasicAuthPage(page);
     testHelper = new TestHelper(page);
-    await homePage.goToBasicAuthMenu();
+    await homePage.goToMenu('Basic Auth');
     const pageHeading = await (testHelper.getPageHeading()).textContent();
     const successMessage = await (basicAuthPage.getSuccessMessage()).textContent();
     expect(pageHeading).toBe('Basic Auth');
@@ -44,7 +44,7 @@ test('should throw error message on invalid credentials', async({browser})=>{
     await page.goto('/');
     homePage = new HomePage(page);
     basicAuthPage = new BasicAuthPage(page);
-    await homePage.goToBasicAuthMenu();
+    await homePage.goToMenu('Basic Auth');
     const bodyText = await (basicAuthPage.getBodyText()).textContent();
     expect(bodyText).toContain('Not authorized');
    

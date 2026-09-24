@@ -16,7 +16,7 @@ test.describe('Verify checkbox functionality',async()=>{
 
     test('should check the checkbox successfully',async()=>{
         const homePage = new HomePage(page);
-        await homePage.goToCheckboxesMenu();
+        await homePage.goToMenu('Checkboxes');
         const testHelperPage = new TestHelper(page);
         const checkboxPage = new CheckboxPage(page);
         const pageHeading = await (testHelperPage.getPageHeading()).textContent();

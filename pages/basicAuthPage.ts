@@ -1,15 +1,15 @@
 import { Page } from "@playwright/test";
 import { Locator } from "@playwright/test";
+import { BasePage } from "./basePage";
 
-export class BasicAuthPage{
+export class BasicAuthPage extends BasePage{
 
-    private readonly page : Page;
     private successMessage : Locator;
     private bodyText : Locator;
 
 
     constructor(page : Page){
-        this.page = page;
+        super(page);
         this.successMessage = this.page.locator('p');
         this.bodyText = this.page.locator('body');
     }

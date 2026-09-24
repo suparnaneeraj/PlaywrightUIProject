@@ -12,7 +12,7 @@ test.describe("should verify the dropdown functionality", async()=>{
         page = await browser.newPage();
         await page.goto('/');
         const homePage = new HomePage(page);
-        homePage.goToDropdownMenu();
+        homePage.goToMenu('Dropdown');
     })
 
     test('should select an option from the dropdown', async()=>{

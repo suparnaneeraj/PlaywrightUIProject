@@ -1,15 +1,15 @@
 import {Page, Locator} from '@playwright/test';
+import { BasePage } from './basePage';
 
-export class HiddenElementPage{
+export class HiddenElementPage extends BasePage{
 
-    private readonly page: Page;
     private startButton: Locator;
     private hiddenElementPageTitle: Locator;
     private loadingLocator: Locator;
     private hiddenTextLocator: Locator;
 
     constructor(page: Page){
-        this.page = page;
+        super(page)
         this.startButton = this.page.getByRole('button', {name: 'Start'});
         this.hiddenElementPageTitle = this.page.getByRole('heading',{name:'Example 1: Element on page that is hidden'});
         this.loadingLocator = this.page.locator('#loading');

@@ -7,7 +7,7 @@ const fileTypes =['txt','png', 'pdf']
 test.beforeEach(async({page})=>{
     await page.goto('/');
     const homePage= new HomePage(page);
-    await homePage.goToFileDownloadPage();
+    await homePage.goToMenu('File Download');
 
 
 })

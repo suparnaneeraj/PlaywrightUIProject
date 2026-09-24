@@ -14,7 +14,7 @@ test.describe('Dynamic Controls Tests', ()=>{
     test('should verify if a checkbox can be successfully removed',async({page})=>{
         const successMessage = 'It\'s gone!';
         homePage = new HomePage(page);
-        await homePage.goToDynamicControlsPage();
+        await homePage.goToMenu('Dynamic Controls');
         dynamicControlsPage = new DynamicControls(page);
         await expect(dynamicControlsPage.isOnDynamicControlsPage()).toBeVisible();
         await expect(dynamicControlsPage.getCheckbox()).toBeVisible();

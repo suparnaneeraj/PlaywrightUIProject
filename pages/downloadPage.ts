@@ -1,19 +1,11 @@
 import {Page, Locator, expect} from '@playwright/test';
+import { BasePage } from './basePage';
 
-export class DownloadPage{
-
-    private readonly page: Page;
-    private pageTitle: Locator;
-   
+export class DownloadPage extends BasePage{
 
     constructor(page: Page){
-        this.page= page;
-        this.pageTitle = this.page.getByRole('heading');
+        super(page);
        
-    }
-
-    getPageTitle(){
-        return this.pageTitle;
     }
 
     async getFileByExtension(extension: string){

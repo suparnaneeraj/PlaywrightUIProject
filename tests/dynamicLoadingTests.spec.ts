@@ -10,7 +10,7 @@ test.describe('Dynamic Loading Tests', async()=>{
     test.beforeEach(async({page})=>{
         await page.goto('/');  
         homePage = new HomePage(page);
-        await homePage.goToDynamicLoadingPage();
+        await homePage.goToMenu('Dynamic Loading');
 
     })
     test('should verify if the hidden element is displayed on clicking', async({page})=>{
