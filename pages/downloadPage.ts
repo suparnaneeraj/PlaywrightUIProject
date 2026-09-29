@@ -14,7 +14,7 @@ export class DownloadPage extends BasePage{
     }
 
     async downloadFile(file: string){
-        await this.page.getByText(file).click();
+        await this.page.getByText(file,{ exact: true }).click();
     
     }
 

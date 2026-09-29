@@ -10,6 +10,6 @@ export class BasePage{
     }
 
     getPageTitle(){
-        return this.pageTitle;
+        return this.pageTitle.first();
     }
 }

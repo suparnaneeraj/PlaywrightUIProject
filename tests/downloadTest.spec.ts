@@ -1,18 +1,14 @@
-import {test, expect} from '@playwright/test';
-import { HomePage } from '../pages/homePage';
-import { DownloadPage } from '../pages/downloadPage';
+import {test, expect} from '../fixture';
 import fs from 'fs';
 
 const fileTypes =['txt','png', 'pdf']
-test.beforeEach(async({page})=>{
+
+test.beforeEach(async({page, homePage})=>{
     await page.goto('/');
-    const homePage= new HomePage(page);
     await homePage.goToMenu('File Download');
 
-
 })
-test(`should download the file successfully`, async({page})=>{
-        const downloadPage = new DownloadPage(page);
+test(`should download the file successfully`, async({downloadPage, page})=>{
         await expect(downloadPage.getPageTitle()).toHaveText('File Downloader');
         for(const type of fileTypes){
             const fileName = await downloadPage.getFileByExtension(type);    // get the first file with given extension
@@ -27,8 +23,7 @@ test(`should download the file successfully`, async({page})=>{
        
 })
 
-test(`should verify if the downloaded  file is not empty`, async({page})=>{
-    const downloadPage = new DownloadPage(page);
+test(`should verify if the downloaded  file is not empty`, async({downloadPage, page})=>{
     for(const type of fileTypes){
         const fileName = await downloadPage.getFileByExtension(type);
         const downloadPromise = page.waitForEvent('download');  

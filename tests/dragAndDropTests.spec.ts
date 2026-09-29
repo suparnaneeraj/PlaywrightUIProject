@@ -1,15 +1,11 @@
-import {test, expect} from '@playwright/test';
-import { HomePage } from '../pages/homePage';
-import { DragAndDrop } from '../pages/dragAndDropPage';
+import {test, expect} from '../fixture';
 
-test.beforeEach(async({page})=>{
+test.beforeEach(async({page, homePage})=>{
     await page.goto('/');
-    const homePage= new HomePage(page);
     await homePage.goToMenu('Drag and Drop');
 })
-test('should drag and drop elements successfully', async({page})=>{
+test('should drag and drop elements successfully', async({dragAndDropPage})=>{
     const pageTitle = 'Drag and Drop';
-    const dragAndDropPage = new DragAndDrop(page);
     await expect(dragAndDropPage.getPageTitle()).toHaveText(pageTitle);
     await expect(dragAndDropPage.getColumnA()).toHaveText('A');
     await expect(dragAndDropPage.getColumnB()).toHaveText('B');

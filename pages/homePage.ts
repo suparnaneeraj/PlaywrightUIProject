@@ -11,7 +11,7 @@ export class HomePage extends BasePage{
     }
 
     async goToMenu(menuName: string){
-        await this.page.getByText(menuName,{exact:true}).click();
+        await this.page.getByRole('link',{name: menuName, exact:true}).click();
     }
 
    

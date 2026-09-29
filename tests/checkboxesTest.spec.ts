@@ -1,25 +1,17 @@
-import {test, Page, Browser, expect} from '@playwright/test';
-import { HomePage } from '../pages/homePage';
-import { TestHelper } from '../util/testHelper';
-import { CheckboxPage } from '../pages/checkboxPage';
+import {test, expect} from '../fixture';
 
-let page: Page;
 let checkbox2Name : string = 'checkbox 2';
 let checkbox1Name : string = 'checkbox 1';
 
 test.describe('Verify checkbox functionality',async()=>{
     
-    test.beforeEach(async({browser})=>{
-        page = await browser.newPage();
+    test.beforeEach(async({page})=>{
         page.goto('/');
     })
 
-    test('should check the checkbox successfully',async()=>{
-        const homePage = new HomePage(page);
+    test('should check the checkbox successfully',async({checkboxPage, homePage, basePage})=>{
         await homePage.goToMenu('Checkboxes');
-        const testHelperPage = new TestHelper(page);
-        const checkboxPage = new CheckboxPage(page);
-        const pageHeading = await (testHelperPage.getPageHeading()).textContent();
+        const pageHeading = await (basePage.getPageTitle()).textContent();
         expect(pageHeading).toEqual('Checkboxes');
         // first we verify if the second checkbox is checked.
         const checkbox2 =  checkboxPage.getCheckbox(checkbox2Name);
@@ -28,7 +20,7 @@ test.describe('Verify checkbox functionality',async()=>{
         const checkbox1 = checkboxPage.getCheckbox(checkbox1Name)
         await checkbox1.check();
         await expect(checkbox1).toBeChecked();
-        
+    
 
     })
 
